@@ -140,7 +140,7 @@ export default class NoteForm extends React.Component {
                     className="text-input text-input__phone"
                     placeholder="Telefone"
                     guide={true}
-                    onChange={onPhoneChange}
+                    onChange={this.onPhoneChange}
                 />
                 <input
                     type="text"
