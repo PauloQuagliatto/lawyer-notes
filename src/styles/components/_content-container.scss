@@ -1,0 +1,14 @@
+.content-container {
+    margin: 0 auto;
+    padding: 0 $m-size;
+    max-width: 80rem;
+}
+.content-container__bigger {
+    max-width: 100rem;
+}
+
+.content-container__icon {
+    padding-right: $m-size;
+    display: flex;
+    align-content: center;
+}

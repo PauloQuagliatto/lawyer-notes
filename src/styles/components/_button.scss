@@ -1,0 +1,39 @@
+.btn {
+    background: $blue;
+    border: none;
+    color: white;
+    display: inline-block;
+    font-size: $font-size-large;
+    font-weight: 300;
+    line-height: 1;
+    padding: $s-size;
+    text-decoration: none;
+    transition: background .03s ease;
+    &:hover {
+        background: $dark-blue;
+    }
+}
+
+.btn--link {
+    background: none;
+    transition: color 0.3s ease;
+    &:hover {
+        color: darken(white, 15%);
+        background: none;
+    }
+}
+
+.btn--secondary {
+    background: $red;
+    &:hover {
+        background: darken($red, 15%);
+    }
+    margin-bottom: $l-size;
+}
+
+.btn--terciary { 
+    background: $green; 
+    &:hover {
+        background: darken($green, 15%);
+    }
+}

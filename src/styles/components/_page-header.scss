@@ -1,0 +1,19 @@
+.page-header {
+    background: $dark-white;
+    padding: $l-size 0;
+    margin-bottom: $l-size;
+}
+
+.page-header__actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: $m-size;
+}
+
+.page-header__title {
+    font-weight: 300;
+    margin: 0;
+    span {
+        font-weight: bold;
+    }
+}
