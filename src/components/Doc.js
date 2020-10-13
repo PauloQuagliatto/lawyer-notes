@@ -21,7 +21,6 @@ const styles = StyleSheet.create({
         borderColor: "#666666"
     },
     fullInformationContainer: {
-        width: 700,
         margin: 2,
         padding: 3,
         flexDirection: "column",
@@ -54,8 +53,7 @@ const styles = StyleSheet.create({
     textConfig: {
         padding: 1,
         margin: 1,
-        fontSize: 12,
-        maxWidth: 250
+        fontSize: 12
     }
 })
 

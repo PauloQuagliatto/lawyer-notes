@@ -21,7 +21,6 @@ const styles = StyleSheet.create({
         borderColor: "#666666"
     },
     fullInformationContainer: {
-        width: 700,
         margin: 3,
         padding: 2,
         flexDirection: "column",
@@ -52,16 +51,7 @@ const styles = StyleSheet.create({
         margin: 5
     },
     textConfig: {
-        fontSize: 12,
-        maxWidth: 250
-    },
-    doubleTextConfig: {
-        fontSize: 12,
-        maxWidth: 250
-    },
-    notationConfig: {
-        fontSize: 12,
-        maxWidth: 450
+        fontSize: 12
     }
 })
 
@@ -102,9 +92,6 @@ const ResumedDoc = (props) => (
                                                     <Text style={styles.textConfig}>Distribuição: {moment(note.distribuition).format('DD/MM/YYYY')}</Text>
                                                     <Text style={styles.textConfig}>Tel: {note.phone}</Text>
                                                 </View>
-                                            </View>
-                                            <View style={styles.informationContent}>
-                                                
                                             </View>
                                         </View>
                                         )
