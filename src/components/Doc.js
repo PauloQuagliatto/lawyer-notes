@@ -6,6 +6,7 @@ import moment from 'moment'
 const styles = StyleSheet.create({
     contentContainer: {
         margin: 10,
+        marginLeft: 4,
         padding: 10,
         display: "flex",
         flexDirection: "column",
@@ -35,6 +36,7 @@ const styles = StyleSheet.create({
         justifyContent: "space-evenly"
     },
     informationContent: {
+        width: 300,
         display: "flex",
         flexDirection: "column"
     },
