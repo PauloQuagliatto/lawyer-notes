@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
         padding: 3,
         display: "flex",
         flexDirection: "row",
-        justifyContent: "space-between"
+        justifyContent: "space-evenly"
     },
     informationContent: {
         display: "flex",
