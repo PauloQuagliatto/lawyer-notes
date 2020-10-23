@@ -82,7 +82,7 @@ const Doc = (props) => (
                     <View>
                         {props.notes.map((note) => {
                                     return (
-                                        <View style={styles.fullInformationContainer}key={note.id} {...note} wrap={false}>
+                                        <View style={styles.fullInformationContainer} key={note.id} {...note} wrap={false}>
                                             <View style={styles.informationContainer}>
                                                 <View style={styles.informationContent}>
                                                     <Text style={styles.textConfig}>Vara: {note.vara}</Text>

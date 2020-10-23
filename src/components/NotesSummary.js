@@ -1,13 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { PDFDownloadLink } from '@react-pdf/renderer'
-import Doc from './Doc'
-import ResumedDoc from './ResumedDoc'
 import selectNotes from '../selectors/notes'
+import LazyDocButton from './LazyDocButton'
+import LazyResumeButton from './LazyResumeButton'
 
 const NotesSummary = ({ visibleNotes, notesCount }) => {
-    const noteWord = notesCount === 1 ? 'Ação' : 'Ações'
+    const noteWord = notesCount === 1 ? 'Cliente' : 'Clientes'
 
     return(
         <div className="page-header">
@@ -16,16 +15,8 @@ const NotesSummary = ({ visibleNotes, notesCount }) => {
                 <div className="page-header__actions">
                     <Link className="btn" to="/create">Adicionar Ação</Link>
                     <div>
-                        <PDFDownloadLink className="btn btn--terciary give-space" 
-                            document={<ResumedDoc notes={visibleNotes} />} fileName="relatorio resumido.pdf">
-                            {({ blob, url, loading, error }) => 
-                            (loading ? 'Carregando Relatório...' : 'Gerar Relatório Resumido')}
-                        </PDFDownloadLink>
-                        <PDFDownloadLink className="btn btn--terciary" 
-                            document={<Doc notes={visibleNotes} />} fileName="relatorio.pdf">
-                            {({ blob, url, loading, error }) => 
-                            (loading ? 'Carregando Relatório...' : 'Gerar Relatório')}
-                        </PDFDownloadLink>
+                        <LazyDocButton notes={visibleNotes} />
+                        <LazyResumeButton notes={visibleNotes} />
                     </div>
                 </div>
             </div>
