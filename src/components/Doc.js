@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
         justifyContent: "space-evenly"
     },
     informationContent: {
-        width: 300,
+        width: 250,
         display: "flex",
         flexDirection: "column"
     },
