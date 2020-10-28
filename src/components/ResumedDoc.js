@@ -5,13 +5,20 @@ import moment from 'moment'
 
 const styles = StyleSheet.create({
     contentContainer: {
-        margin: 10,
-        marginLeft: 4,
-        padding: 10,
+        left: 0,
+        right: 0,
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         maxWidth: "80%"
+    },
+    pageNumber: {
+        position: 'absolute',
+        fontSize: 8,
+        bottom: 30,
+        left: 0,
+        right: 0,
+        textAlign: 'center'
     },
     titleContainer: {
         width: 500,
@@ -99,6 +106,9 @@ const ResumedDoc = (props) => (
                                         )
                                 })}
                     </View>
+                    <Text style={styles.pageNumber} render={({ pageNumber }) => (
+                        `${pageNumber}`
+                    )} fixed />
                 </Page>}
     </Document>
 )

@@ -2,16 +2,24 @@ import React from 'react'
 import { Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer'
 import moment from 'moment'
 
-
 const styles = StyleSheet.create({
     contentContainer: {
-        margin: 10,
-        marginLeft: 4,
-        padding: 10,
+        marginTop: 10,
+        marginBottom:5,
+        left: 0,
+        right: 0,
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         maxWidth: "80%"
+    },
+    pageNumber: {
+        position: 'absolute',
+        fontSize: 10,
+        bottom: 30,
+        left: 0,
+        right: 0,
+        textAlign: 'center'
     },
     titleContainer: {
         width: 500,
@@ -54,8 +62,14 @@ const styles = StyleSheet.create({
     },
     textConfig: {
         padding: 1,
-        margin: 1,
-        fontSize: 12
+        marginBottom: 1,
+        marginHorizontal: 3,
+        fontSize: 12,
+        display: 'flex',
+        flexDirection: 'row'
+    },
+    stronger: {
+        fontWeight: 900
     }
 })
 
@@ -68,7 +82,7 @@ const Doc = (props) => (
                     <Text style={styles.subTitle}>Paulo Felix</Text>
                     <Text style={styles.filterText}>Relatório</Text>
                     <View><Text>Nada Selecionado.</Text></View>
-                </View> 
+                </View>
                 </Page> 
                 : 
                 <Page size="A4" style={styles.contentContainer}>
@@ -85,7 +99,7 @@ const Doc = (props) => (
                                         <View style={styles.fullInformationContainer} key={note.id} {...note} wrap={false}>
                                             <View style={styles.informationContainer}>
                                                 <View style={styles.informationContent}>
-                                                    <Text style={styles.textConfig}>Vara: {note.vara}</Text>
+                                                    <View style={styles.textConfig}><Text style={styles.stronger}>Vara: </Text><Text>{note.vara}</Text></View>
                                                     <Text style={styles.textConfig}>Processo: {note.process}</Text>
                                                     <Text style={styles.textConfig}>Cliente: {note.client}</Text>
                                                     <Text style={styles.textConfig}>Providência: {note.providence}</Text>
@@ -101,6 +115,9 @@ const Doc = (props) => (
                                         )
                                 })}
                     </View>
+                    <Text style={styles.pageNumber} render={({ pageNumber }) => (
+                        `${pageNumber}`
+                    )} fixed />
                 </Page>}
     </Document>
 )
