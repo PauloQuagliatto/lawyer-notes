@@ -1,10 +1,27 @@
 import React from 'react'
-import { Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer'
+import { Document, Page, Text, View, StyleSheet, Font } from '@react-pdf/renderer'
 import moment from 'moment'
+import loraRegular from '../fonts/Lora-Regular.ttf'
+import loraBold from '../fonts/Lora-Bold.ttf'
 
+Font.register({ 
+    family: 'Lora',
+    format: "trueType",
+    fonts: 
+    [
+        {
+            src: loraRegular
+        },
+        {
+            src: loraBold,
+            fontWeight: 'bold'
+        }
+    ]
+})
 
 const styles = StyleSheet.create({
     contentContainer: {
+        fontFamily: 'Lora',
         left: 0,
         right: 0,
         display: "flex",
@@ -14,9 +31,9 @@ const styles = StyleSheet.create({
     },
     pageNumber: {
         position: 'absolute',
-        fontSize: 8,
-        bottom: 30,
-        left: 0,
+        fontSize: 10,
+        bottom: 50,
+        left: 485,
         right: 0,
         textAlign: 'center'
     },
@@ -59,8 +76,19 @@ const styles = StyleSheet.create({
         fontSize: 12,
         margin: 5
     },
-    textConfig: {
+    textBoxConfig: {
+        padding: 1,
+        marginBottom: 1,
+        marginHorizontal: 3,
+        display: 'flex',
+        flexDirection: 'row'
+    },
+    textNormal: {
         fontSize: 12
+    },
+    textStrong: {
+        fontSize: 12,
+        fontWeight: 'bold'
     }
 })
 
@@ -78,6 +106,9 @@ const ResumedDoc = (props) => (
                 : 
                 <Page size="A4" style={styles.contentContainer}>
                     <View style={styles.titleContainer}>
+                    <Text style={styles.pageNumber} render={({ pageNumber }) => (
+                        `${pageNumber}`
+                    )} />
                         <Text style={styles.title}>Escritório Jurídico</Text>
                         <Text style={styles.subTitle}>Paulo Felix</Text>
                         <Text style={styles.filterText}>
@@ -90,25 +121,42 @@ const ResumedDoc = (props) => (
                                         <View style={styles.fullInformationContainer}key={note.id} {...note} wrap={false}>
                                             <View style={styles.informationContainer}>
                                                 <View style={styles.informationContent}>
-                                                    <Text style={styles.textConfig}>Vara: {note.vara}</Text>
-                                                    <Text style={styles.textConfig}>Processo: {note.process}</Text>
-                                                    <Text style={styles.textConfig}>Cliente: {note.client}</Text>
-                                                    <Text style={styles.textConfig}>Providência: {note.providence}</Text>
-                                                    
+                                                    <View style={styles.textConfig}>
+                                                        <Text style={styles.textStrong}>Vara: </Text>
+                                                        <Text style={styles.textNormal}>{note.vara}</Text>
                                                     </View>
+                                                    <View style={styles.textConfig}>
+                                                        <Text style={styles.textStrong}>Processo: </Text>
+                                                        <Text style={styles.textNormal}>{note.process}</Text>
+                                                    </View>
+                                                    <View style={styles.textConfig}>
+                                                            <Text style={styles.textStrong}>Cliente: </Text> 
+                                                            <Text style={styles.textNormal}>{note.client}</Text>
+                                                    </View>
+                                                    <View style={styles.textConfig}>
+                                                            <Text style={styles.textStrong}>Providência: </Text> 
+                                                            <Text style={styles.textNormal}>{note.providence}</Text>
+                                                    </View>
+                                                </View>
                                                 <View style={styles.informationContent}>
-                                                    <Text style={styles.textConfig}>Ação: {note.acao}</Text>
-                                                    <Text style={styles.textConfig}>Distribuição: {moment(note.distribuition).format('DD/MM/YYYY')}</Text>
-                                                    <Text style={styles.textConfig}>Tel: {note.phone}</Text>
+                                                    <View style={styles.textConfig}>
+                                                        <Text style={styles.textStrong}>Ação: </Text>
+                                                        <Text style={styles.textNormal}>{note.acao}</Text>
+                                                    </View>
+                                                    <View style={styles.textConfig}>
+                                                        <Text style={styles.textStrong}>Distribuição: </Text>
+                                                        <Text style={styles.textNormal}>{moment(note.distribuition).format('DD/MM/YYYY')}</Text>
+                                                    </View>
+                                                    <View style={styles.textConfig}>
+                                                        <Text style={styles.textStrong}>Tel: </Text>
+                                                        <Text style={styles.textNormal}>{note.phone}</Text>
+                                                    </View>
                                                 </View>
                                             </View>
                                         </View>
                                         )
                                 })}
                     </View>
-                    <Text style={styles.pageNumber} render={({ pageNumber }) => (
-                        `${pageNumber}`
-                    )} fixed />
                 </Page>}
     </Document>
 )
