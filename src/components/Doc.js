@@ -22,7 +22,7 @@ Font.register({
 const styles = StyleSheet.create({
     contentContainer: {
         fontFamily: 'Lora',
-        marginTop: 10,
+        marginTop: 8,
         marginBottom:5,
         left: 0,
         right: 0,
@@ -79,6 +79,7 @@ const styles = StyleSheet.create({
         margin: 5
     },
     textBoxConfig: {
+        width: 180,
         padding: 1,
         marginBottom: 1,
         marginHorizontal: 3,
@@ -86,10 +87,10 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     textNormal: {
-        fontSize: 12
+        fontSize: 11
     },
     textStrong: {
-        fontSize: 12,
+        fontSize: 11,
         fontWeight: 'bold'
     }
 })
@@ -123,37 +124,37 @@ const Doc = (props) => (
                                         <View style={styles.fullInformationContainer} key={note.id} {...note} wrap={false}>
                                             <View style={styles.informationContainer}>
                                                 <View style={styles.informationContent}>
-                                                <View style={styles.textConfig}>
-                                                    <Text style={styles.textStrong}>Vara: </Text>
-                                                    <Text style={styles.textNormal}>{note.vara}</Text>
-                                                </View>
-                                                <View style={styles.textConfig}>
+                                                    <View style={styles.textBoxConfig}>
+                                                        <Text style={styles.textStrong}>Vara: </Text>
+                                                        <Text style={styles.textNormal}>{note.vara}</Text>
+                                                    </View>
+                                                    <View style={styles.textBoxConfig}>
                                                     <Text style={styles.textStrong}>Processo: </Text>
                                                     <Text style={styles.textNormal}>{note.process}</Text>
-                                                </View>
-                                                <View style={styles.textConfig}>
-                                                        <Text style={styles.textStrong}>Cliente: </Text> 
-                                                        <Text style={styles.textNormal}>{note.client}</Text>
-                                                </View>
-                                                <View style={styles.textConfig}>
-                                                        <Text style={styles.textStrong}>Providência: </Text> 
-                                                        <Text style={styles.textNormal}>{note.providence}</Text>
-                                                </View>
+                                                    </View>
+                                                    <View style={styles.textBoxConfig}>
+                                                            <Text style={styles.textStrong}>Cliente: </Text> 
+                                                            <Text style={styles.textNormal}>{note.client}</Text>
+                                                    </View>
+                                                    <View style={styles.textBoxConfig}>
+                                                            <Text style={styles.textStrong}>Providência: </Text> 
+                                                            <Text style={styles.textNormal}>{note.providence}</Text>
+                                                    </View>
                                                 </View>
                                                 <View style={styles.informationContent}>
-                                                    <View style={styles.textConfig}>
+                                                    <View style={styles.textBoxConfig}>
                                                         <Text style={styles.textStrong}>Ação: </Text>
                                                         <Text style={styles.textNormal}>{note.acao}</Text>
                                                     </View>
-                                                    <View style={styles.textConfig}>
+                                                    <View style={styles.textBoxConfig}>
                                                         <Text style={styles.textStrong}>Distribuição: </Text>
                                                         <Text style={styles.textNormal}>{moment(note.distribuition).format('DD/MM/YYYY')}</Text>
                                                     </View>
-                                                    <View style={styles.textConfig}>
+                                                    <View style={styles.textBoxConfig}>
                                                         <Text style={styles.textStrong}>Tel: </Text>
                                                         <Text style={styles.textNormal}>{note.phone}</Text>
                                                     </View>
-                                                    <View style={styles.textConfig}>
+                                                    <View style={styles.textBoxConfig}>
                                                         <Text style={styles.textStrong}>Endereço: </Text>
                                                         <Text style={styles.textNormal}>{note.address}</Text>
                                                     </View>
