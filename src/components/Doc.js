@@ -111,7 +111,7 @@ const Doc = (props) => (
                     <View style={styles.titleContainer}>
                     <Text style={styles.pageNumber} render={({ pageNumber }) => (
                         `${pageNumber}`
-                    )} />
+                    )} fixed />
                         <Text style={styles.title}>Escritório Jurídico</Text>
                         <Text style={styles.subTitle}>Paulo Felix</Text>
                         <Text style={styles.filterText}>
