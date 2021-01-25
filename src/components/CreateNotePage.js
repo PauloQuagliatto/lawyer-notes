@@ -6,7 +6,7 @@ import { startAddNote } from '../actions/notes'
 class CreateNotePage extends React.Component {
   onSubmit = (note) => {
     this.props.startAddNote(note)
-    this.props.history.push('/')
+    this.props.history.push('/dashboard')
   }
 
   render() {

@@ -10,3 +10,10 @@
     margin: 0 0 $m-size 0;
     font-style: italic;
 }
+
+.form--log {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin-left: 10%;
+}
