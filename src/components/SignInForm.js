@@ -1,47 +1,39 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { useForm } from 'react-hook-form'
+import { connect } from 'react-redux'
+import { startSignIn } from '../actions/auth'
 
-const SignInForm = () => {
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [error, setError] = useState('')
-    const onEmailChange = (e) => {
-        const email = e.target.value
-        setEmail(() => ({ email }))
-    }
-    const onPasswordChange = (e) => {
-        const password = e.target.value
-        setPassword(() => ({ password }))
-    }
-    const onSubmit = (e) => {
-        e.preventDefault()
-        setError(() => ({ error: '' }))
-        const user = {
-            emai: this.state.email,
-            password: this.state.password
-        }
+const SignInForm = ({ startSignIn }) => {
+    const {register, handleSubmit} = useForm()
+
+    const onSubmit = (data) => {
+        startSignIn(data.email, data.password)
     }
     return (
-        <form className="form--log" onSubmit={onSubmit}>
-            {error && <p className="form__error">{error}</p>}
-            <h1 className="box-layout__title">Registre seu usuário</h1>
+        <form className="box-layout__content" onSubmit={handleSubmit(onSubmit)}>
+            <h1 className="box-layout__title box-layout__title--small">Registre seu usuário</h1>
             <input
+                ref={register}
                 type="text"
-                className="text-input"
+                className="text-input text-input--spaced"
                 placeholder="Email"
                 autoFocus
-                value={email}
-                onChange={onEmailChange}
+                name="email"
             />
             <input
+                ref={register}
                 type="password"
-                className="text-input"
+                className="text-input text-input--spaced"
                 placeholder="Senha"
-                value={password}
-                onChange={onPasswordChange}
+                name="password"
             />
-            <button className="btn">Registrar</button>
+            <button className="btn" type="submit">Registrar</button>
         </form>
     )
 }
 
-export { SignInForm as default }
+const mapDispatchToProps = (dispatch) => ({
+    startSignIn: dispatch(startSignIn)
+})
+
+export default connect(undefined, mapDispatchToProps)(SignInForm)

@@ -1,40 +1,37 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { startLogin } from '../actions/auth'
+import { useForm } from 'react-hook-form'
 
-const LoginPage = ({ startLogin }) => {
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [user, setUser] = useState({})
+const LoginPage = () => {
+    const {register, handleSubmit} = useForm()
 
-    const login = (email, password) => {
-        setUser({
-            email: email,
-            password: password
-        })
-
-        startLogin(user)
+    const onSubmit = (data) => {
+        alert(JSON.stringify(data))
     }
     return (
-        <div >
+        <form className="box-layout__content" onSubmit={handleSubmit(onSubmit)}>
+         <h1 className="box-layout__title box-layout__title--small">Logue-se</h1>
             <input
+                ref={register}
                 type="text"
                 className="text-input text-input--spaced"
                 placeholder="Email"
                 autoFocus
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                name="email"
             />
             <input
+                ref={register}
                 type="password"
                 className="text-input text-input--spaced"
                 placeholder="Senha"
-                autoFocus
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                name="password"
             />
-            <button className="btn" onClick={login}>Login</button>
-        </div>
+            <button 
+                className="btn"
+                type="submit"
+            >Login</button>
+        </form>
     )
 }
 

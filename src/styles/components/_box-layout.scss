@@ -13,11 +13,29 @@
   border-radius: 3px;
   padding: $l-size $m-size;
   text-align: center;
-  width: 100rem;
+  width: 80rem;
   height: 30rem;
+  @media (max-width: $desktop-breakpoint) {
+    width: 30rem;
+    height: 35rem;
+  }
 }
 
 .box-layout__title {
   margin: 0 0 $m-size 0;
   line-height: 1;
+}
+
+.box-layout__title--small {
+  line-height: 3;
+  font-size: $font-size-small;
+}
+
+.box-layout__optionals {
+  display: flex;
+  justify-content: center;
+  margin-top: 2vh;
+  @media (max-width: $desktop-breakpoint) {
+    margin-top: 0;
+  }
 }

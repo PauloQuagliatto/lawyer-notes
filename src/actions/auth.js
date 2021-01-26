@@ -1,13 +1,24 @@
-import { firebase, googleAuthProvider } from '../firebase/firebase'
+import { firebase } from '../firebase/firebase'
 
-export const login = (uid) => ({
-    type: 'LOGIN',
-    uid
+export const startSignIn = ({email, password}) => {
+    const user = { email, password }
+    return (dispatch) => {
+        return firebase.auth().signInWithEmailAndPassword(user)
+        .then((user) => {
+            debugger
+            dispatch(signIn(user))
+        })
+    }
+}
+
+export const signIn = (user) => ({
+    type: 'SIGN_IN',
+    user
 })
 
 export const startLogin = () => {
     return () => {
-        return firebase.auth().signInWithPopup(googleAuthProvider)
+        return firebase.auth().signInWithEmailAndPassword()
     }
 }
 
@@ -21,14 +32,8 @@ export const startLogout = () => {
     }
 }
 
-export const signIn = (email, password) => ({
-    type: 'SIGN_IN',
-    email,
-    password
+export const login = (uid) => ({
+    type: 'LOGIN',
+    uid
 })
 
-export const startSignIn = () => {
-    return () => {
-        return firebase.auth().signInWithEmailAndPassword()
-    }
-}

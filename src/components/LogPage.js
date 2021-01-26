@@ -4,24 +4,34 @@ import LoginForm from './LoginForm'
 import SignInForm from './SignInForm'
 import { startLogin, startSignIn } from '../actions/auth'
 
-const LogPage = ({ startLogin, startSignIn}) => {
+const LogPage = ({ startLogin, startSignIn }) => {
     const [hasAccount, setHasAccount] = useState(true)
+    
     const onSubmit = (user) => {
-        this.props.startSignIn(user)
-        this.props.history.push('/dashboard')
+        //startSignIn(user)
+        setHasAccount(true)
     }
     
+    const changeForm = () => {
+        setHasAccount(!hasAccount)
+    }
+
+    const optionText = hasAccount ? ['Precisa de uma senha?','Registre-se'] : ['Tem uma senha?','Logue-se']
+
     return (
         <div className="box-layout">
         <div className="box-layout__box">
-        <h1 className="box-layout__title">Lawyer Notes</h1>
+            <h1 className="box-layout__title">Lawyer Notes</h1>
             {hasAccount ? <LoginForm /> : <SignInForm onSubmit={onSubmit} />}
-            <button 
-                className="btn--create"
-                onClick={() => setHasAccount(false)}
-            >
-                Criar Conta
-            </button>
+            <div className="box-layout__optionals">
+                <p className="log-option-text">{optionText[0]}</p>
+                <button 
+                    className="btn--create"
+                    onClick={() => changeForm()}
+                >
+                    {optionText[1]}
+                </button>
+            </div>
             </div>
         </div>
     )

@@ -43,12 +43,12 @@
     border: none;
     color: $dark-blue;
     display: inline-block;
-    font-size: $font-size-small;
+    font-size: $font-size-vsmall;
     font-weight: 100;
     padding: $s-size;
     text-decoration: none;
     transition: border-bottom .03 ease;
     &:hover {
-        border-bottom: $dark-blue;
+        border-bottom: 1px solid $dark-blue;
     }
 }
