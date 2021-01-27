@@ -1,11 +1,10 @@
 import { firebase } from '../firebase/firebase'
 
-export const startSignIn = ({email, password}) => {
-    const user = { email, password }
+export const startSignIn = (email, password) => {
     return (dispatch) => {
-        return firebase.auth().signInWithEmailAndPassword(user)
+        const { user } = firebase.auth().createUserWithEmailAndPassword(email, password)
         .then((user) => {
-            debugger
+            return user
             dispatch(signIn(user))
         })
     }

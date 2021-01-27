@@ -1,14 +1,11 @@
 import React, { useState } from 'react'
-import { connect } from 'react-redux'
 import LoginForm from './LoginForm'
 import SignInForm from './SignInForm'
-import { startLogin, startSignIn } from '../actions/auth'
 
 const LogPage = ({ startLogin, startSignIn }) => {
     const [hasAccount, setHasAccount] = useState(true)
     
-    const onSubmit = (user) => {
-        //startSignIn(user)
+    const onSubmit = () => {
         setHasAccount(true)
     }
     
@@ -37,9 +34,5 @@ const LogPage = ({ startLogin, startSignIn }) => {
     )
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  startSignIn: (user) => dispatch(startSignIn(user)),
-  startLogin: (user) => dispatch(startLogin(user))
-})
 
-export default connect(undefined, mapDispatchToProps)(LogPage)
+export { LogPage as default }
