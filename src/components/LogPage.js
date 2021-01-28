@@ -2,12 +2,8 @@ import React, { useState } from 'react'
 import LoginForm from './LoginForm'
 import SignInForm from './SignInForm'
 
-const LogPage = ({ startLogin, startSignIn }) => {
+const LogPage = () => {
     const [hasAccount, setHasAccount] = useState(true)
-    
-    const onSubmit = () => {
-        setHasAccount(true)
-    }
     
     const changeForm = () => {
         setHasAccount(!hasAccount)
@@ -19,7 +15,7 @@ const LogPage = ({ startLogin, startSignIn }) => {
         <div className="box-layout">
         <div className="box-layout__box">
             <h1 className="box-layout__title">Lawyer Notes</h1>
-            {hasAccount ? <LoginForm /> : <SignInForm onSubmit={onSubmit} />}
+            {hasAccount ? <LoginForm /> : <SignInForm />}
             <div className="box-layout__optionals">
                 <p className="log-option-text">{optionText[0]}</p>
                 <button 

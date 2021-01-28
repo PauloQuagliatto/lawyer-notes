@@ -1,11 +1,15 @@
 import { firebase } from '../firebase/firebase'
 
-export const startSignIn = (email, password) => {
+export const startSignIn = (userData = {}) => {
     return (dispatch) => {
-        const { user } = firebase.auth().createUserWithEmailAndPassword(email, password)
-        .then((user) => {
-            return user
-            dispatch(signIn(user))
+        const {
+            email = '',
+            password = ''
+        } = userData
+        const user = { email, password }
+        return firebase.auth().createUserWithEmailAndPassword(user.email, user.password).then((user) => {
+            alert(JSON.stringify(user))
+            dispatch(signIn(...user))
         })
     }
 }
@@ -15,9 +19,17 @@ export const signIn = (user) => ({
     user
 })
 
-export const startLogin = () => {
-    return () => {
-        return firebase.auth().signInWithEmailAndPassword()
+export const startLogin = (userData = {}) => {
+    return (dispatch) => {
+        const {
+            email = '',
+            password = ''
+        } = userData
+        const user = { email, password }
+        alert(JSON.stringify(user))
+        return firebase.auth().signInWithEmailAndPassword(user.email, user.password).then((user) => {
+            dispatch(login(user.uid))
+        })
     }
 }
 

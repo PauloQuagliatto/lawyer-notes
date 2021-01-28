@@ -1,7 +1,7 @@
 export default (state = {}, action) => {
     switch(action.type) {
         case 'SIGN_IN':
-            return{
+            return {
                 email: action.user
             }
         case 'LOGIN':

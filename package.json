@@ -2,12 +2,29 @@
   "name": "lawyer-notes",
   "version": "1.0.0",
   "main": "main.js",
-  "private": true,
+  "description": "Electron-React App para fins do advogado Paulo Felix",
+  "author": "Paulo Miranda Quagliatto",
+  "build": {
+    "productName": "Lawyer Notes",
+    "appId": "lawyer-notes",
+    "artifactName": "Lawyer Notes.${ext}",
+    "files":[
+      "build/**/*",
+      "index.html",
+      "main.js"
+    ],
+    "win":{
+      "icon": "build/images/icon.png"
+    },
+    "extends": null
+  },
+  "homepage": "./",
   "dependencies": {
     "@react-pdf/renderer": "^1.6.11",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "electron-is-dev": "^1.2.0",
     "esm": "^3.2.25",
     "express": "^4.17.1",
     "file-saver": "^2.0.2",
@@ -29,12 +46,13 @@
     "sass": "^1.32.2"
   },
   "scripts": {
-    "dev": "concurrently \"cross-env BROWSER=none npm run start\" \"wait-on http://localhost:3000 && electron .\"",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "heroku-postbuild": "npm run build"
+    "react-start": "react-scripts start",
+    "react-build": "react-scripts build",
+    "react-test": "react-scripts test",
+    "react-eject": "react-scripts eject",
+    "electron-build": "electron-builder",
+    "build": "npm run react-build && npm run electron-build",
+    "dev": "concurrently \"cross-env BROWSER=none npm run react-start\" \"wait-on http://localhost:3000 && electron .\""
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -58,6 +76,7 @@
     "concurrently": "^5.3.0",
     "cross-env": "^7.0.3",
     "electron": "^11.2.1",
+    "electron-builder": "^22.9.1",
     "wait-on": "^5.2.1"
   }
 }

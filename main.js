@@ -1,4 +1,7 @@
-const { app, BrowserWindow, ipcMain, Notification } = require('electron')
+const { app, BrowserWindow } = require('electron')
+const path = require('path')
+const isDev = require('electron-is-dev')
+
 let win
 
 const createWindow = () => {
@@ -8,21 +11,18 @@ const createWindow = () => {
         webPreferences : {
             nodeIntegration: true,
             worldSafeExecuteJavaScript: true,
-            toggleDeveloperTools: true,
-            contextIsolation: false
+            contextIsolation: false,
+            menuBarVisible: false
         }
     })
-
-    window.loadURL('http://localhost:3000')
+    win.webContents.toggleDevTools()
+    win.loadURL(
+        isDev ? 'http://localhost:3000' : `file:///${path.join(__dirname, '../build/index.html')}`)
 }
 
 
-app.whenReady().then(createWindow)
-
-  
-ipcMain.on('app-quit', () => {
-    app.quit();
-})
+app.whenReady()
+ .then(createWindow)
 
 app.on('window-all-closed', () => {
     if(process.platform !== 'darwin') {

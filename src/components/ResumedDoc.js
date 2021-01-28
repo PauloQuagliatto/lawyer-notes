@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     pageNumber: {
         position: 'absolute',
         fontSize: 10,
-        bottom: 50,
+        top: 8,
         left: 485,
         right: 0,
         textAlign: 'center'
@@ -108,10 +108,10 @@ const ResumedDoc = (props) => (
                 </Page> 
                 : 
                 <Page size="A4" style={styles.contentContainer}>
-                    <View style={styles.titleContainer}>
-                    <Text style={styles.pageNumber} render={({ pageNumber }) => (
+                <Text style={styles.pageNumber} render={({ pageNumber }) => (
                         `${pageNumber}`
-                    )} fixed />
+                    )} fixed/>
+                    <View style={styles.titleContainer}>
                         <Text style={styles.title}>Escritório Jurídico</Text>
                         <Text style={styles.subTitle}>Paulo Felix</Text>
                         <Text style={styles.filterText}>
