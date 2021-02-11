@@ -1,7 +1,7 @@
 import database from '../firebase/firebase'
 
 // ADD_NOTE
-export const addNote = (note) => ({
+const addNote = (note) => ({
   type: 'ADD_NOTE',
   note
 })
@@ -34,7 +34,7 @@ export const startAddNote = (noteData = {}) => {
 }
 
 // REMOVE_NOTE
-export const removeNote = ({ id } = {}) => ({
+const removeNote = ({ id } = {}) => ({
   type: 'REMOVE_NOTE',
   id
 })
@@ -49,7 +49,7 @@ export const startRemoveNote = ({ id } = {}) => {
 }
 
 // EDIT_NOTE
-export const editNote = (id, updates) => ({
+const editNote = (id, updates) => ({
   type: 'EDIT_NOTE',
   id,
   updates
@@ -68,7 +68,7 @@ export const startEditNote = (id, updates) => {
 }
 
 //SET_NOTES
-export const setNotes = (notes) => ({
+const setNotes = (notes) => ({
   type: 'SET_NOTES',
   notes
 })
@@ -85,6 +85,21 @@ export const startSetNotes = () => {
         })
       })
       dispatch(setNotes(notes))
+    })
+  }
+}
+
+//WIPE_NOTES
+const wipeNotes = () => ({
+  type: 'WIPE_NOTES'
+})
+
+//ON_DB_CHANGES
+export const onDBChanges = () => {
+  return (dispatch) => {
+    return database.ref('notes').on('value').then((snapshot) => {
+      dispatch(wipeNotes)
+      dispatch(startSetNotes)
     })
   }
 }

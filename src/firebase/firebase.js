@@ -1,7 +1,6 @@
 import firebase from 'firebase/app'
 import 'firebase/database'
 import 'firebase/auth'
-import { addNote, removeNote, editNote } from '../actions/notes'
 
 const firebaseConfig = {
     apiKey: 'AIzaSyAzNZ0PNkGiEHzrwLw6xVO818ZPyf7okDM',
