@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import moment from 'moment'
 import { startRemoveNote } from '../actions/notes'
+import editIcon from '../assets/images/icons/edit.svg'
+import trashIcon from '../assets/images/icons/trash.svg'
 
 class NoteListItem extends React.Component {
     onRemove = () => {
@@ -22,7 +24,7 @@ class NoteListItem extends React.Component {
                             <img 
                             className="icon-small" 
                             alt="edit icon" 
-                            src="images/icons/edit.svg" 
+                            src={editIcon} 
                             />
                         </Link>
                     </div>
@@ -30,7 +32,7 @@ class NoteListItem extends React.Component {
                         <img 
                         className="icon-small icon-small--btn" 
                         alt="trash icon" 
-                        src="images/icons/trash.svg" 
+                        src={trashIcon} 
                         onClick={this.onRemove}
                         />
                     </div>

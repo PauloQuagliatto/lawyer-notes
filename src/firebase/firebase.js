@@ -1,4 +1,7 @@
-import * as firebase from 'firebase'
+import firebase from 'firebase/app'
+import 'firebase/database'
+import 'firebase/auth'
+import { addNote, removeNote, editNote } from '../actions/notes'
 
 const firebaseConfig = {
     apiKey: 'AIzaSyAzNZ0PNkGiEHzrwLw6xVO818ZPyf7okDM',
@@ -14,5 +17,23 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig)
 
 const database = firebase.database()
+
+database.ref('notes').on('child_added', (snapshot, dispatch) => {
+    return dispatch(addNote({
+        id: snapshot.key,
+        ...snapshot
+      }))
+})
+
+database.ref('notes').on('child_removed', (snapshot, dispatch) => {
+    return dispatch(removeNote({ id: snapshot.key }))
+})
+
+database.ref('notes').on('child_changed', (snapshot, dispatch) => {
+    return dispatch(editNote({
+        id: snapshot.key,
+        ...snapshot
+      }))
+})
 
 export { firebase, database as default }

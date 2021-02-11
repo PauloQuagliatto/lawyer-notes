@@ -8,7 +8,6 @@ export const startSignIn = (userData = {}) => {
         } = userData
         const user = { email, password }
         return firebase.auth().createUserWithEmailAndPassword(user.email, user.password).then((user) => {
-            alert(JSON.stringify(user))
             dispatch(signIn(...user))
         })
     }
@@ -26,10 +25,9 @@ export const startLogin = (userData = {}) => {
             password = ''
         } = userData
         const user = { email, password }
-        alert(JSON.stringify(user))
         return firebase.auth().signInWithEmailAndPassword(user.email, user.password).then((user) => {
             dispatch(login(user.uid))
-        })
+        }).catch(error => alert('Usuário não existe!'))
     }
 }
 

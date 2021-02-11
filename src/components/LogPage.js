@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import LoginForm from './LoginForm'
 import SignInForm from './SignInForm'
+import bgImage from '../assets/images/bg.jpg'
 
 const LogPage = () => {
     const [hasAccount, setHasAccount] = useState(true)
@@ -12,7 +13,12 @@ const LogPage = () => {
     const optionText = hasAccount ? ['Precisa de uma senha?','Registre-se'] : ['Tem uma senha?','Logue-se']
 
     return (
-        <div className="box-layout">
+        <div className="box-layout"
+            style={{
+                background: `url(${bgImage}`,
+                backgroundSize: 'cover'
+            }}
+        >
         <div className="box-layout__box">
             <h1 className="box-layout__title">Lawyer Notes</h1>
             {hasAccount ? <LoginForm /> : <SignInForm />}

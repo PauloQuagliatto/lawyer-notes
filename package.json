@@ -1,24 +1,54 @@
 {
   "name": "lawyer-notes",
   "version": "1.0.0",
-  "main": "main.js",
+  "main": "public/electron.js",
   "description": "Electron-React App para fins do advogado Paulo Felix",
   "author": "Paulo Miranda Quagliatto",
+  "homepage": "./",
   "build": {
     "productName": "Lawyer Notes",
-    "appId": "lawyer-notes",
-    "artifactName": "Lawyer Notes.${ext}",
-    "files":[
-      "build/**/*",
-      "index.html",
-      "main.js"
+    "appId": "lawyer.notes",
+    "files": [
+      "./build/**/*"
     ],
-    "win":{
-      "icon": "build/images/icon.png"
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "icon": "assets/icon.png",
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false
     },
-    "extends": null
+    "dmg": {
+      "contents": [
+        {
+          "x": 130,
+          "y": 220
+        },
+        {
+          "x": 430,
+          "y": 220,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "win": {
+      "icon": "assets/icon.png",
+      "target": [
+        "nsis"
+      ]
+    },
+    "linux": {
+      "target": [
+        "deb",
+        "rpm",
+        "AppImage"
+      ],
+      "category": "Development"
+    },
+    "directories": {
+      "buildResources": "assets"
+    }
   },
-  "homepage": "./",
   "dependencies": {
     "@react-pdf/renderer": "^1.6.11",
     "@testing-library/jest-dom": "^4.2.4",
@@ -46,13 +76,13 @@
     "sass": "^1.32.2"
   },
   "scripts": {
-    "react-start": "react-scripts start",
-    "react-build": "react-scripts build",
-    "react-test": "react-scripts test",
-    "react-eject": "react-scripts eject",
-    "electron-build": "electron-builder",
-    "build": "npm run react-build && npm run electron-build",
-    "dev": "concurrently \"cross-env BROWSER=none npm run react-start\" \"wait-on http://localhost:3000 && electron .\""
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "dist": "electron-builder",
+    "make:win": "electron-builder --win --x64",
+    "dev": "concurrently \"cross-env BROWSER=none npm run start\" \"wait-on http://localhost:3000 && electron .\""
   },
   "eslintConfig": {
     "extends": "react-app"
