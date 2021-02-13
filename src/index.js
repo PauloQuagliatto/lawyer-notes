@@ -2,9 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import AppRouter, { history } from './routes/AppRouter'
 import LoadingPage from './components/LoadingPage'
-import { startSetNotes } from './actions/notes'
+import { startSetNotes, addNote, removeNote, editNote } from './actions/notes'
 import { login, logout } from './actions/auth'
-import { addNote, removeNote, editNote } from './action/notes'
 import { Provider } from 'react-redux'
 import configureStore from './store/configureStore'
 import 'normalize.css'
@@ -48,7 +47,7 @@ firebase.auth().onAuthStateChanged((user) => {
   }
 })
 
-firebase.database.ref('notes').on.child('child_added').then((snapshot) => {
+firebase.database().ref('notes').on('child_added', (snapshot) => {
   if(checkIfInStore(snapshot.key)){
     const note = {
       id: snapshot.key,
@@ -60,7 +59,7 @@ firebase.database.ref('notes').on.child('child_added').then((snapshot) => {
   }
 })
 
-firebase.database.ref('notes').on.child('child_removed').then((snapshot) => {
+firebase.database().ref('notes').on('child_removed', (snapshot) => {
   const id = snapshot.key
   if(checkIfInStore(id)){
     store.dispatch(removeNote({ id }))
@@ -69,7 +68,7 @@ firebase.database.ref('notes').on.child('child_removed').then((snapshot) => {
   }
 })
 
-firebase.database.ref('notes').on.child('child_changed').then((snapshot) => {
+firebase.database().ref('notes').on('child_changed', (snapshot) => {
   if(checkIfInStore(snapshot.key)) {
     store.dispatch(editNote(snapshot.key, ...snapshot))
   }else{

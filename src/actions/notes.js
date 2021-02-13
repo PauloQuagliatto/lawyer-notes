@@ -1,7 +1,7 @@
 import database from '../firebase/firebase'
 
 // ADD_NOTE
-const addNote = (note) => ({
+export const addNote = (note) => ({
   type: 'ADD_NOTE',
   note
 })
@@ -34,7 +34,7 @@ export const startAddNote = (noteData = {}) => {
 }
 
 // REMOVE_NOTE
-const removeNote = ({ id } = {}) => ({
+export const removeNote = ({ id } = {}) => ({
   type: 'REMOVE_NOTE',
   id
 })
@@ -49,7 +49,7 @@ export const startRemoveNote = ({ id } = {}) => {
 }
 
 // EDIT_NOTE
-const editNote = (id, updates) => ({
+export const editNote = (id, updates) => ({
   type: 'EDIT_NOTE',
   id,
   updates
