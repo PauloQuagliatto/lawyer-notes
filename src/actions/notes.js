@@ -88,18 +88,3 @@ export const startSetNotes = () => {
     })
   }
 }
-
-//WIPE_NOTES
-const wipeNotes = () => ({
-  type: 'WIPE_NOTES'
-})
-
-//ON_DB_CHANGES
-export const onDBChanges = () => {
-  return (dispatch) => {
-    return database.ref('notes').on('value').then((snapshot) => {
-      dispatch(wipeNotes)
-      dispatch(startSetNotes)
-    })
-  }
-}

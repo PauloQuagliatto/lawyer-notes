@@ -15,7 +15,7 @@ const LogPage = () => {
     return (
         <div className="box-layout"
             style={{
-                background: `url(${bgImage}`,
+                background: `url(${bgImage})`,
                 backgroundSize: 'cover'
             }}
         >

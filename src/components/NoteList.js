@@ -30,7 +30,7 @@ const NoteList = (props) => (
     </div>
 )
 
-const mapStateToProps = (state)=>{
+const mapStateToProps = (state) => {
     return { notes: selectNotes(state.notes, state.filters) }
 }
 
