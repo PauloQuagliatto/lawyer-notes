@@ -23,7 +23,6 @@ export const startAddNote = (noteData = {}) => {
       createdAt = 0
     } = noteData
     const note = { vara, acao, process, client, address, phone, counterPart, lawyer, distribuition, goingOn, providence, createdAt }
-
     return database.ref('notes').push(note).then((ref) => {
       dispatch(addNote({
         id: ref.key,

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { startLogout } from '../actions/auth'
 
-const Header = ({ startLogout, wipeandReSetNotes }) => (
+const Header = ({ startLogout }) => (
   <header className="header">
     <div className="content-container">
       <div className="header__content">

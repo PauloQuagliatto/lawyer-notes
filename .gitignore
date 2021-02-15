@@ -11,6 +11,8 @@
 # production
 /build
 /dist
+/instalador
+.Instruções.txt
 
 # misc
 .DS_Store
