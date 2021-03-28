@@ -3,14 +3,14 @@ import 'firebase/database'
 import 'firebase/auth'
 
 const firebaseConfig = {
-    apiKey: 'AIzaSyAzNZ0PNkGiEHzrwLw6xVO818ZPyf7okDM',
-    authDomain: 'lawyer-notes.firebaseapp.com',
-    databaseURL: 'https://lawyer-notes.firebaseio.com',
-    projectId: 'lawyer-notes',
-    storageBucket: 'lawyer-notes.appspot.com',
-    messagingSenderId: '1051679270484',
-    appId: '1:1051679270484:web:80d7499dad394d9c802fc1',
-    measurementId: 'G-9JP66Q4NJY'
+    apiKey: xxxxx,
+    authDomain: xxxx,
+    databaseURL: xxxxx,
+    projectId: xxxxx,
+    storageBucket: xxxxx,
+    messagingSenderId: xxxx,
+    appId: xxxxx,
+    measurementId: xxxxxx
 }
 
 firebase.initializeApp(firebaseConfig)
